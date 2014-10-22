@@ -4,6 +4,12 @@ namespace Sody;
 
 use Exception;
 
+/**
+ * Directory class
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 class Directory
 {
     /**

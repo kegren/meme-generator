@@ -4,6 +4,12 @@ namespace Sody;
 
 use League\Flysystem\FilesystemInterface;
 
+/**
+ * Image repository class
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 class ImageRepository
 {
     /**
@@ -45,7 +51,7 @@ class ImageRepository
     }
 
     /**
-     * Adds an image
+     * Adds an image to output
      *
      * @param array $image
      */
@@ -65,8 +71,6 @@ class ImageRepository
         if (array_key_exists($file['filename'], $this->children)) {
             if ($file['type'] !== 'dir') {
                 $file['children'] = $this->children[$file['filename']];
-
-                // var_dump($this->getImageInfoByPath($file['path']));
 
                 $file['res'] = $this->getImageInfoByPath($file['path']);
                 return $file;

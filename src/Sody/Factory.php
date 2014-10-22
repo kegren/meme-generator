@@ -10,6 +10,12 @@ use Sody\ImageUpload;
 use Sody\ImageRepository;
 use Sody\ImageInterface;
 
+/**
+ * Factory class
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 class Factory
 {
     /**

@@ -2,6 +2,12 @@
 
 namespace Sody;
 
+/**
+ * Image validation trait
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 trait ImageValidate
 {
     /**
@@ -25,8 +31,8 @@ trait ImageValidate
 
     /**
      *
-     * @param  [type]  $tmpFile [description]
-     * @return boolean          [description]
+     * @param  string  $tmpFile
+     * @return boolean
      */
     public function isAllowed($tmpFile)
     {
@@ -35,8 +41,8 @@ trait ImageValidate
 
     /**
      *
-     * @param  [type]  $tmpFile [description]
-     * @return boolean          [description]
+     * @param  string  $tmpFile
+     * @return boolean
      */
     public function isRealImage($tmpFile)
     {

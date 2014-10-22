@@ -4,6 +4,12 @@ namespace Sody;
 
 use Sody\ImageInterface;
 
+/**
+ * Image class
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 class Image implements ImageInterface
 {
     use ImageValidate;

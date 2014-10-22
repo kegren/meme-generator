@@ -7,6 +7,12 @@ use League\Flysystem\FilesystemInterface;
 use Sody\ImageUploadException;
 use Exception;
 
+/**
+ * Image upload class
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 class ImageUpload
 {
     /**
@@ -38,8 +44,8 @@ class ImageUpload
     /**
      * Stores an image to the file system.
      *
-     * @param  array  $sizes [description]
-     * @return [type]        [description]
+     * @param  array  $sizes
+     * @return bool
      */
     public function store(array $sizes, $text)
     {

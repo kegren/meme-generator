@@ -2,6 +2,12 @@
 
 namespace Sody;
 
+/**
+ * Image interface
+ *
+ * @author Kenny Damgren <kennydamgren@gmail.com>
+ * @package Sody
+ */
 interface ImageInterface
 {
     public function getType();

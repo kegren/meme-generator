@@ -14,12 +14,12 @@ $app = new Silex\Application();
 // define root
 defined('ROOT') or define('ROOT', __DIR__ . '/');
 
-// debug feature
+// debug
 $app['debug'] = false;
 
 // some settings
 $app['upload.dir'] = __DIR__ . '/uploads/';
-
+// some predefined sizes
 $app['image.sizes'] = [
     '960' => '600',
     '480' => '300'
@@ -30,7 +30,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . "/view",
 ));
 
-// routes
+// post route
 $app->post('/api/v1/images', function (Request $request) use ($app) {
     $image = isset($_FILES['file'])
            ? $_FILES['file']
@@ -51,14 +51,16 @@ $app->post('/api/v1/images', function (Request $request) use ($app) {
     return $app->json($images, 200);
 });
 
+// get route, returns all images
 $app->get('/api/v1/images', function (Request $request) use ($app) {
     $images = (new Sody\Factory())
             ->createImageRepository($app['upload.dir'])
             ->getImages();
 
-    return $app->json(!$images ? [] : $images, 200);
+    return $app->json($images, 200);
 });
 
+// delete route, deletes upload directory then recreates it
 $app->delete('/api/v1/images', function (Request $request) use ($app) {
     $filesystem = new Filesystem(
         new Adapter(
