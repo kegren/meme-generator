@@ -1,0 +1,33 @@
+{
+  "name": "Kenny Damgren",
+  "version": "0.0.1",
+  "authors": [
+    "Kenny Damgren <kennydamgren@gmail.com>"
+  ],
+  "description": "c2",
+  "license": "MIT",
+  "homepage": "http://kennydamgren.me",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.2.7",
+    "angular-resource": "~1.2.19",
+    "colorbox": "~1.5.14",
+    "angular-animate": "~1.2.0",
+    "foundation": "~5.4.6",
+    "masonry": "~3.1.5",
+    "imagesloaded": "~3.1.8",
+    "jquery": "1.9.1",
+    "fancybox": "~2.1.5",
+    "components-font-awesome": "~4.2.0"
+  },
+  "resolutions": {
+    "angular": "1.2.26"
+  }
+}

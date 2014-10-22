@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meme-generator</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- css -->
+    <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="../bower_components/foundation/css/normalize.css">
+    <link rel="stylesheet" href="../bower_components/fancybox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="../bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/meme.css">
+</head>
+<body>
+    <div class="container" ng-controller="index.listCtrl">
+        <div class="row">
+            <div class="small-12 columns text-center">
+                <h1>Meme-generator!</h1>
+            </div>
+        </div> <!-- /.row -->
+
+        <section ng-cloak class="row">
+            <div class="small-12 columns">
+                <div class="text-center" ng-show="!isUploading">
+                    <button class="button small" ng-class="{'upload-btn': !showUploadForm, 'orange': showUploadForm}" ng-click="showUploadForm=!showUploadForm">
+                        <i class="fa fa-upload"></i>
+                        Create your own meme
+                    </button>
+                    <div ng-show="showUploadForm" class="upload-form">
+                        <form ng-submit="upload()" method="post">
+                            <label>Add text
+                                <input ng-model="text" type="text" placeholder="large-6.columns" />
+                            </label>
+                            <input type="file"
+                            onchange="angular.element(this).scope().setFile(this)">
+                            <button type="submit" class="button success tiny">
+                                <i class="fa fa-check"></i>
+                                Upload
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center" ng-show="isUploading">
+                    <img src="/images/loading.gif" alt="Loading icon" width="30" height="30">
+                    Uploading....
+                </div>
+                <div ng-show="alert">
+                    <div data-alert class="alert-box" ng-class="{success: alert.type == 'success', alert: alert.type == 'alert'}">
+                      <% alert.msg %>
+                    </div>
+                </div>
+            </div> <!-- /.small-12 columns -->
+        </section> <!-- /.row -->
+
+        <br><br>
+
+        <section class="row clearfix">
+            <div ng-cloak class="small-12 columns">
+                <button ng-show="images.length > 0" class="button secondary small" ng-click="showAll=!showAll">
+                    <i class="fa fa-image"></i>
+                    <span ng-if="showAll">Show only original images</span>
+                    <span ng-if="!showAll">Show all</span>
+                </button>
+                <button ng-show="images.length > 0" ng-click="delete()" class="button alert small" ng-click="showAll=!showAll">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    Delete all images
+                </button>
+                <section ng-if="showAll">
+                    <ul class="small-block-grid-4" ng-repeat="(key, img) in images track by $index">
+                        <li>
+                            <a href="/uploads/<% img.path %>" class="fancybox" rel="<% img.filename %>">
+                                <img ng-src="/uploads/<% img.path %>"
+                                    alt="<% img.filename %>"
+                                    width="200"
+                                    height="200"
+                                    class="th">
+                            </a>
+                            <div class="image-action clearfix">
+                                <a target="_self" href="/uploads/<% img.path %>" download="" class="button success tiny">
+                                    <i class="fa fa-download"></i>
+                                    Download
+                                </a>
+                                <% img.res %>
+                            </div>
+                        </li>
+                        <li ng-repeat="(key, child) in img.children track by $index">
+                            <a href="/uploads/<% child.dirname %>/<% child.basename %>" class="fancybox" rel="<% child.dirname %>">
+                                <img ng-src="/uploads/<% child.dirname %>/<% child.basename %>"
+                                    alt="<% child.filename %>"
+                                    width="<% child.filename == 'text' ? 198 : 180 %>"
+                                    height="200"
+                                    class="th">
+                            </a>
+                            <div class="image-action clearfix">
+                                <a target="_self" href="/uploads/<% child.dirname %>/<% child.basename %>" download="" class="button success tiny">
+                                    <i class="fa fa-download"></i>
+                                    Download
+                                </a>
+                                <% child.res %>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <section ng-if="!showAll">
+                    <ul class="small-block-grid-4">
+                        <li ng-repeat="(key, img) in images track by $index">
+                            <a href="/uploads/<% img.path %>" class="fancybox" rel="images1">
+                                <img ng-src="/uploads/<% img.path %>"
+                                    alt="<% img.filename %>"
+                                    width="200"
+                                    height="200"
+                                    class="th">
+                            </a>
+                            <div class="image-action clearfix">
+                                <a target="_self" href="/uploads/<% img.path %>" download="" class="button success tiny">
+                                    <i class="fa fa-download"></i>
+                                    Download
+                                </a>
+                                <% img.res %>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <div class="text-center" ng-show="images === undefined">
+                    <div data-alert class="alert-box alert">
+                      No images found
+                    </div>
+                </div>
+                <div class="text-center" ng-show="images.length <= 0">
+                    <img src="/images/loading.gif" alt="Loading icon" width="30" height="30">
+                </div>
+            </div> <!-- /.small-12 columns -->
+        </section> <!-- /.row -->
+
+        <footer class="row">
+            <div class="small-12 columns">
+                <hr>
+                <p>Created by <a href="mailto:kennydamgren@gmail.com">Kenny Damgren</a></p>
+            </div>
+        </footer>
+    </div> <!-- /.container -->
+
+    <!-- scripts -->
+    <script src="../bower_components/jquery/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="../bower_components/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="../bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+    <script src="../bower_components/fancybox/source/jquery.fancybox.pack.js"></script>
+    <script src="../js/meme.js"></script>
+</body>
+</html>

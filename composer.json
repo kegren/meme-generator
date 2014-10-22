@@ -1,0 +1,23 @@
+{
+    "name": "kegren/test_c2",
+    "description": "c2",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kenny Damgren",
+            "email": "kennydamgren@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "intervention/image": "*",
+        "league/flysystem": "0.5.*",
+        "silex/silex": "~1.1",
+        "twig/twig": ">=1.8,<2.0-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sody\\": "src/Sody"
+        }
+    }
+}

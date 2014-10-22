@@ -1,0 +1,57 @@
+body {
+    background: #022745;
+    color: #fff;
+}
+h1, h2, h3, h4, h5 {
+    font-family: 'Lato';
+    color: #fff;
+}
+h1 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 1.2rem;
+    margin-top: 0.67em;
+}
+a {
+    color: #EF672C;
+}
+a:hover {
+    color: #C24712;
+}
+label {
+    font-size: 1.275rem;
+    color: #fff;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+.upload-form {
+    margin: 0 auto;
+    width: 50%;
+    line-height: 2;
+}
+input[type="file"] {
+    width: 40%;
+    color: #E27D7D;
+}
+.button.upload-btn {
+    background: #114F83;
+}
+.button.orange {
+    background: #EF672C;
+}
+.image {
+    background: #fff;
+}
+.image-action {
+    margin-top: 5px;
+    height: 40px;
+    width: 90%;
+    color: #EF672C;
+    font-size: 0.8rem;
+}
+.image-action img {
+    width: 50%;
+}
