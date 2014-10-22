@@ -15,7 +15,7 @@ $app = new Silex\Application();
 defined('ROOT') or define('ROOT', __DIR__ . '/');
 
 // debug feature
-$app['debug'] = true;
+$app['debug'] = false;
 
 // some settings
 $app['upload.dir'] = __DIR__ . '/uploads/';
