@@ -75,8 +75,8 @@ $app->delete('/api/v1/images', function (Request $request) use ($app) {
 });
 
 // home route
-$app->get('/', function () use ($app) {
-    return $app['twig']->render('index.twig', ['uploadDir' => $app['upload.dir']]);
+$app->get('/', function (Request $request) use ($app) {
+    return $app['twig']->render('index.twig');
 });
 
 // error/exception handling
