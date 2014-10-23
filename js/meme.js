@@ -1,6 +1,6 @@
 $(function () {
     $(".fancybox").fancybox();
-})
+});
 
 angular.module('service.upload', []).factory('service.upload', [
     '$http', function ($http) {
@@ -16,8 +16,8 @@ angular.module('service.upload', []).factory('service.upload', [
                     data: file
                 });
             },
-        }
-}])
+        };
+}]);
 
 angular.module('service.image', []).factory('service.image', [
     '$resource', function($resource) {
@@ -48,18 +48,18 @@ angular.module('index.listCtrl', []).controller('index.listCtrl', [
 
         $scope.setFile = function(file) {
             $scope.file = file;
-        }
+        };
 
         $scope.delete = function() {
             if ($scope.images) {
                 if (confirm('Are you sure?')) {
                     ImageSvc.delete({}, function (res) {
                         $scope.images = undefined;
-                        $scope.alert = undefined
+                        $scope.alert = undefined;
                     });
                 }
             }
-        }
+        };
 
         $scope.upload = function() {
             if ($scope.file) {
@@ -83,7 +83,7 @@ angular.module('index.listCtrl', []).controller('index.listCtrl', [
                         $scope.alert = {
                             type: 'success',
                             msg: 'Your image was uploaded'
-                        }
+                        };
                         $scope.showUploadForm = false;
                     }, function (err) {
                         $scope.isUploading = false;
@@ -91,14 +91,14 @@ angular.module('index.listCtrl', []).controller('index.listCtrl', [
                         $scope.alert = {
                             type: 'alert',
                             msg: angular.fromJson(err.data)
-                        }
+                        };
                     });
                 }
             }
-        }
+        };
 
         $scope.init();
-}])
+}]);
 // app name
 var name = 'kegren';
 

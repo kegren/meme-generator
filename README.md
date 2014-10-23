@@ -12,7 +12,7 @@
 * 5.4+
 * GD
 * Composer
-* Browser with support for FormData
+* Browser with support for FormData/Download
 * Supports jpg/jpeg,gif and png
 * Works best with images with higher res
 
